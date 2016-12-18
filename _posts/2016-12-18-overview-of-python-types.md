@@ -5,7 +5,7 @@ date:   2016-12-18 21:00:00 +1000
 categories: python types
 ---
 
-While Python is a dynamically typed language, from Python 3.5 onwards there's been an effort to add the ability to use types within the language. Python 3.4 added the ability to add any arbitrary python expression to the arguments in a function with [PEP 3107](https://www.python.org/dev/peps/pep-3107/), and this was expanded upon in Python 3.5 with [PEP 484](https://www.python.org/dev/peps/pep-0484/), which aimed to provide a standard syntax for declaring types in Python.
+While Python is a dynamically typed language, from Python 3.5 onwards there's been an effort to add the ability to use types within the language. Python 3.4 added the ability to add any arbitrary python expression to the arguments in a function with [PEP 3107 (Function Annotations)](https://www.python.org/dev/peps/pep-3107/), and this was expanded upon in Python 3.5 with [PEP 484 (Type Hints)](https://www.python.org/dev/peps/pep-0484/), which aimed to provide a standard syntax for declaring types in Python.
 
 
 In the "Rationale" section of PEP 484, it is made very clear that "Python will remain a dynamically typed language, and the authors have no desire to ever make type hints mandatory, even by convention". 
@@ -24,13 +24,13 @@ Why Types?
 Types give us the ability to reason about our programs more easily, by restricting the inputs and outputs of our functions to only those things our code actually knows how to deal with. The more sophisticated your type system, the more nuanced you can make these restrictions, eventually reaching the point where you can do cool things like type-level programming.
 
 
-Type checking can eliminate whole classes of type-related bugs, to the point where languages with sophisticated type systems like Haskell can, very much validly, make claims like "if it compiles, it probably runs". Silly mistakes and typos are almost always caught by the typechecker
+Type checking can eliminate whole classes of type-related bugs, to the point where languages with sophisticated type systems like Haskell can, very much validly, make claims like "if it compiles, it probably runs". Silly mistakes and typos are almost always caught by the typechecker.
 
 
-The other advantage of types in languages that are statically typed is efficiency gains - if you know what type something is before you use it, you can eliminate a lot of code just to do with getting at the values you need. Unfortunately, this will never be the case for Python, as PEP 484 explicitly states "Python will remain a dynamically typed language, and the authors have no desire to ever make type hints mandatory, even by convention". If you're desperate for the runtime performance gains that static types bring you, [Cython](http://cython.org/) is the way to go - provide specialised annotations that lets some of your Python be compiled into C.
+The other advantage of types in languages that are statically typed is efficiency gains - if you know what type something is before you use it, you can eliminate a lot of code just to do with getting at the values you need. Unfortunately, this will never be the case for Python, as PEP 484 (Type Hints) explicitly states "Python will remain a dynamically typed language, and the authors have no desire to ever make type hints mandatory, even by convention". If you're desperate for the runtime performance gains that static types bring you, [Cython](http://cython.org/) is the way to go - it allows you to provide specialised annotations that lets some of your Python be compiled into C.
 
 
-The Actual Overview
+Let's look at some code
 ------------------------------
 
 If you've used a language like Java, you pretty much know what to expect when it comes to the basics. Generics, classes, etc, etc. Here's two code samples to compare
@@ -80,7 +80,7 @@ class C(object):
         return [a]
 ```
 
-I've snuck in a bit of Python weirdness without mentioning. As PEP 3107 declares that function annotations must be valid Python expressions, we can't use undefined variables etc, so generics become a little bit more verbose. The `T = TypeVar('T')` declares a "type variable", and when used in a method, all usages of `T` as a type annotation are forced to represent the same type. 
+I've snuck in a bit of Python weirdness without mentioning. As PEP 3107 (Function Annotations) declares that function annotations must be valid Python expressions, we can't use undefined variables etc, so generics become a little bit more verbose. The `T = TypeVar('T')` declares a "type variable", and when used in a method, all usages of `T` as a type annotation are forced to represent the same type. 
 
 Type variables have a concept called "variance", which limits what can be substituted in for them. A "covariant" type variable lets any usages of it be either the same type as, or a "subtype" (subclass) of the type that the variable is standing in for. A "contravairant" type variable makes sure that the type it is standing in for is a subtype/subclass of every usage. An "invariant" type variable must have every usage being exactly the same type as whatever it's standing in for.
 
