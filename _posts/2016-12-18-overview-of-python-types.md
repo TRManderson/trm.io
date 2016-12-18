@@ -5,9 +5,9 @@ date:   2016-12-18 21:00:00 +1000
 categories: python types
 ---
 
-While Python is a dynamically typed language, from Python 3.5 onwards there's been an effort to add the ability to use types within the language. Python 3.4 added the ability to add any arbitrary python expression to the arguments in a function with [PEP 3107 (Function Annotations)](https://www.python.org/dev/peps/pep-3107/), and this was expanded upon in Python 3.5 with [PEP 484 (Type Hints)](https://www.python.org/dev/peps/pep-0484/), which aimed to provide a standard syntax for declaring types in Python.
+While Python is a dynamically typed language, from Python 3.5 onwards there's been an effort to add the ability to use types within the language. Python 3.4 added the ability to add any arbitrary Python expression to the arguments in a function with [PEP 3107 (Function Annotations)](https://www.python.org/dev/peps/pep-3107/), and this was expanded upon in Python 3.5 with [PEP 484 (Type Hints)](https://www.python.org/dev/peps/pep-0484/), which aimed to provide a standard syntax for declaring types in Python. In the "Rationale" section of PEP 484, it is made very clear that "Python will remain a dynamically typed language, and the authors have no desire to ever make type hints mandatory, even by convention". 
 
-This standardised language for types in Python made the [Mypy project](http://mypy-lang.org/) possible - a static typechecker for Python programs with type annotations. At runtime, these type annotations do absolutely nothing (as checking and coercing have a huge runtime overhead), but provide a way for external programs to type-check Python programs. 
+This standardised language for types in Python made the [Mypy project](http://mypy-lang.org/) possible - a static typechecker for Python programs with type annotations. At runtime, these type annotations do absolutely nothing (as checking and coercing have a huge runtime overhead), but allow programs like `mypy` to function.
 
 
 Why Types?
@@ -130,7 +130,7 @@ So while Java relies on the language to do type-based dynamic dispatch, Python d
 
 ## Final Thoughts
 
-While throughout this post I've been using Python 3 examples, this all works on Python 2 (though advanced metaprogramming features aren't going to work out as expected). If you want to start using `typing` in your python code, go check out [the module documentation](https://docs.python.org/3/library/typing.html), and the [`mypy` documentation](http://mypy.readthedocs.io/en/latest/).
+While throughout this post I've been using Python 3 examples, this all works on Python 2 (though advanced metaprogramming features aren't going to work out as expected). If you want to start using `typing` in your Python code, go check out [the module documentation](https://docs.python.org/3/library/typing.html), and the [`mypy` documentation](http://mypy.readthedocs.io/en/latest/).
 
 Also, if you want to know more about type systems, [the Wikipedia article on them](https://en.wikipedia.org/wiki/Type_system) is a great start. The maths behind type systems gets pretty crazy interesting, you'll likely see some more about it on here in the future.
 
