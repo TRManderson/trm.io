@@ -7,15 +7,7 @@ categories: python types
 
 While Python is a dynamically typed language, from Python 3.5 onwards there's been an effort to add the ability to use types within the language. Python 3.4 added the ability to add any arbitrary python expression to the arguments in a function with [PEP 3107 (Function Annotations)](https://www.python.org/dev/peps/pep-3107/), and this was expanded upon in Python 3.5 with [PEP 484 (Type Hints)](https://www.python.org/dev/peps/pep-0484/), which aimed to provide a standard syntax for declaring types in Python.
 
-
-In the "Rationale" section of PEP 484, it is made very clear that "Python will remain a dynamically typed language, and the authors have no desire to ever make type hints mandatory, even by convention". 
-
-
-At runtime, these type annotations do absolutely nothing (as checking and coercing have a huge runtime overhead), but provide a way for external programs to type-check Python programs. 
-
-At this stage, the primary type-checker is [Mypy](http://mypy-lang.org/), whose core contributors include Guido van Rossum (the guy who invented python).
-OR
-This standardised language for types in Python made the [Mypy project](http://mypy-lang.org/) possible - a static typechecker for Python programs with type annotations.
+This standardised language for types in Python made the [Mypy project](http://mypy-lang.org/) possible - a static typechecker for Python programs with type annotations. At runtime, these type annotations do absolutely nothing (as checking and coercing have a huge runtime overhead), but provide a way for external programs to type-check Python programs. 
 
 
 Why Types?
