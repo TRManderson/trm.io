@@ -26,5 +26,4 @@ github_username:  TRManderson
 
 # Build settings
 markdown: kramdown
-theme: minima
 google_analytics: UA-36521202-5
