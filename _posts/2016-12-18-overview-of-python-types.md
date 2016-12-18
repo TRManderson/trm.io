@@ -36,7 +36,7 @@ class A {
     }
 }
 
-class A extends B{  
+class B extends A{
 }
 
 class C {
