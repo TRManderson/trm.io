@@ -28,3 +28,6 @@ github_username:  TRManderson
 markdown: kramdown
 google_analytics: UA-36521202-5
 permalink: /:year/:month/:day/:title.html
+comments: true
+disqus:
+  shortname: trm-io
