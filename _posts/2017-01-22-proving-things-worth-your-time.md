@@ -17,7 +17,7 @@ The Question
 
 I haven't made it that far through the book yet, but what I been working through is the basics of [Coq, a formal proof assistant](https://coq.inria.fr/), which is the tool the book uses to teach concepts. I made my start during a recent work trip, where I made it through the first few chapters. Discussion about what I was up to pretty commonly went as follows:
 
->Colleauge: What are you up to, Tom?
+>Colleague: What are you up to, Tom?
 >
 >Me: Right now? Proving that addition is [commutative](https://en.wikipedia.org/wiki/Commutative_property).
 >
