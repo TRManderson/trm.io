@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Why Proving that Addition is Commutative is Worth Your Time"
-date:   2017-01-22 19:00:00 +1000
+date:   2017-01-22 21:05:00 +1000
 categories: proofs coq mathematics
 ---
 
@@ -49,4 +49,4 @@ Sounds a lot like some sort of method for verifying program behaviour, doesn't i
 
 The reason Idris is worth mentioning is because it allows you to make use of proofs when it *is* useful, and in other situations you can just rely on type system features like [higher-kinded types](https://en.wikipedia.org/wiki/Kind_(type_theory)#Kinds_in_Haskell), [algebraic datatypes](https://en.wikipedia.org/wiki/Algebraic_data_type), and [dependent types](https://en.wikipedia.org/wiki/Dependent_type), which all let you get just a little bit extra certainty in your program. While I'd love to go into more detail on each of the above, they'd probably need a post of their own, for now I've linked the respective Wikipedia pages.
 
-When reliability is a concern in your software, consider using formal methods before jumping right to tests. Surprisingly enough, you'll probably get more reliability from less code.
+When reliability is a concern in your software, consider using formal methods before jumping right to tests. Surprisingly enough, you'll probably get more reliability from less code. If you're interested in learning more, I wholeheartedly recommend Software Foundations, and feel free to send me an email or get in touch via twitter.
