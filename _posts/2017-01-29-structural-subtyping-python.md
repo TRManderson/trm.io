@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "A Python-esque Type System for Python: Static Ducks"
-date:   2017-01-29 18:05:00 +1000
+title:  "A Python-esque Type System for Python: Duck Typing Statically"
+date:   2017-01-29 18:15:00 +1000
 categories: python types mypy
 ---
 
-I think the Mypy static type checker is a fantastic initiative, and absolutely love it. My one complaint is that it relies a little too much on subclassing for determining compatibility. This post discussess
+I think the Mypy static type checker is a fantastic initiative, and absolutely love it. My one complaint is that it relies a little too much on subclassing for determining compatibility. This post discusses nominal vs. structural subtyping, duck typing and how it relates to structural subtyping, subtyping in Mypy, and using abstract base classes in lieu of a structural subtyping system. (Can you say "structural subtyping"?)
 
 Nominative and Structural Subtyping
 -----------------------------------
@@ -38,7 +38,7 @@ class A implements I{
 }   
 ```
 
-The subtyping relation in Java is what's described as "nominative" (name-based) subtyping, forming a "nominal type system". Subtypes are determined by names and explicit declarations of compatability or inheritance, but it's not the only option. There's also "structural" subtyping, where `A` being a subtype of `B` is determined by the structure of both `A` and `B`. The best example I could come up with of a language with structural subtyping is Go, and I've shamelessly stolen the following example from [Go By Example](https://gobyexample.com/interfaces).
+The subtyping relation in Java is what's described as "nominative" (name-based) subtyping, forming a "nominal type system". Subtypes are determined by names and explicit declarations of compatibility or inheritance, but it's not the only option. There's also "structural" subtyping, where `A` being a subtype of `B` is determined by the structure of both `A` and `B`. The best example I could come up with of a language with structural subtyping is Go, and I've shamelessly stolen the following example from [Go By Example](https://gobyexample.com/interfaces).
 
 ```go
 import "fmt"
@@ -86,7 +86,7 @@ func main() {
 }
 ```
 
-In the above code snippet, we've defined an interface `geometry`, and two types `rect` and `circle`. While Go likes to claim it doesn't actually have a subtype relation[^Citation needed], for all intents and purposes `rect` and `circle` are subtypes of `geometry` because there is a defined `area` and `permim` method for both of them, both of which match the type signature of `geometry` for their respective types. Because `rect` and `circle` implement the necessary methods to match the *structre* of `geometry`, they can be used in the `measure` method, which accepts `geometry` values.
+In the above code snippet, we've defined an interface `geometry`, and two types `rect` and `circle`. While Go likes to claim it doesn't actually have a subtype relation[^Citation needed], for all intents and purposes `rect` and `circle` are subtypes of `geometry` because there is a defined `area` and `perim` method for both of them, both of which match the type signature of `geometry` for their respective types. Because `rect` and `circle` implement the necessary methods to match the *structre* of `geometry`, they can be used in the `measure` method, which accepts `geometry` values.
 
 Put simply, because `rect` and `circle` match the structure of `geometry`, they are a subtype of it, and this is structural subtyping. You might find it worthwhile to read more about structural subtyping on the [Wikipedia page about "Structural Type Systems"](https://en.wikipedia.org/wiki/Structural_type_system).
 
@@ -114,7 +114,7 @@ The subtype relation in Mypy as it stands is basically just a nominative checker
 
 Protocols will be declared as separate classes, inheriting from a magic `Protocol` base class. Rather than using `isinstance` to check if something implements a protocol (read: "is a structural subtype of"), there'll be some separate checker function like `implements`. Runtime implementation checks are performance expensive, and Protocols are intended to make static checking easier, not necessarily as a runtime representation of an API (though that functionality is still useful), hence the separate method.
 
-Protocols will be extendable via subclassing (though you'll have to redeclare that you're subclassing the `Protocol` base class, or it'll be assumed you're just implementing the given protocol), will be allowed to be generic, will support declaring both methods and attributes to implement. Here's an example of the syntax:
+Protocols will be extensible via subclassing (though you'll have to redeclare that you're subclassing the `Protocol` base class, or it'll be assumed you're just implementing the given protocol), will be allowed to be generic, will support declaring both methods and attributes to implement. Here's an example of the syntax:
 
 Protocols:
 ```python
@@ -172,7 +172,7 @@ foo = FooConcrete(1)
 fn_on_foo(foo)  # error: Argument 1 to "fn_on_foo" has incompatible type "FooConcrete"; expected "FooBase"
 ```
 
-Very similar code, just with a different base class, an extra decorator, and explicit registration. While these work just as well as runtime, I've included the error output from mypy as comments. Not quite as typechecker-friendly. This case is a little contrived, seeing as I could've just inherited from `FooBase` to start with and everything would've been lovely, but you can see why I'm calling this a stop-gap solution and nothing more.
+Very similar code, just with a different base class, an extra decorator, and explicit registration. While these work just as well as runtime, I've included the error output from mypy as comments. Not quite as type-checker-friendly. This case is a little contrived, seeing as I could've just inherited from `FooBase` to start with and everything would've been lovely, but you can see why I'm calling this a stop-gap solution and nothing more.
 
 Final Thoughts
 --------------
