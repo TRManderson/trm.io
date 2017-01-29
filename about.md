@@ -1,15 +1,9 @@
-#---
-#layout: page
-#title: About
-#permalink: /about/
-#---
+---
+layout: page
+title: About
+permalink: /about/
+---
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+I'm currently a student at the [University of Queensland (UQ)](https://uq.edu.au/), where I'm studying a dual degree in Engineering and Science, majoring in Software Engineering and Mathematics respectively. I am also the President of the [UQ Computing Society](https://uqcs.org.au), and have been part of the management committeee of the Society since my second year of university.
 
-You can find the source code for the Jekyll new theme at:
-{% include icon-github.html username="jekyll" %} /
-[minima](https://github.com/jekyll/minima)
-
-You can find the source code for Jekyll at
-{% include icon-github.html username="jekyll" %} /
-[jekyll](https://github.com/jekyll/jekyll)
+I'm employed as software developer at [Polymathian Pty. Ltd](https://polymathian.com/), a company that uses Operations Reasearch to produce decision support tools. My work is divided between doing devops for the company, and working on our Python data visualisation web framework, [Tropofy](https://tropofy.com/).

@@ -16,9 +16,8 @@
 title: Tom Manderson
 email: me@trm.io
 description: > # this means to ignore newlines until "baseurl:"
-  I'm a student at the University of Queensland studying a dual degree
-  in Software Engineering and Mathematics where I'm the President of the
-  Computing Society. My languages of choice are Python and Haskell.
+  Software engineering/Mathematics student, developer at Polymathian,
+  Pythonista/Haskeller
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://trm.io" # the base hostname & protocol for your site
 twitter_username: TRManderson
