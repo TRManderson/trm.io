@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "A Python-esque Type System for Python: Duck Typing Statically"
-date:   2017-01-29 18:15:00 +1000
+date:   2017-01-29 20:55:00 +1000
 categories: python types mypy
 ---
 
-I think the Mypy static type checker is a fantastic initiative, and absolutely love it. My one complaint is that it relies a little too much on subclassing for determining compatibility. This post discusses nominal vs. structural subtyping, duck typing and how it relates to structural subtyping, subtyping in Mypy, and using abstract base classes in lieu of a structural subtyping system. (Can you say "structural subtyping"?)
+I think the mypy static type checker is a fantastic initiative, and absolutely love it. My one complaint is that it relies a little too much on subclassing for determining compatibility. This post discusses nominal vs. structural subtyping, duck typing and how it relates to structural subtyping, subtyping in mypy, and using abstract base classes in lieu of a structural subtyping system. (Can you say "structural subtyping"?)
 
 Nominative and Structural Subtyping
 -----------------------------------
@@ -86,7 +86,7 @@ func main() {
 }
 ```
 
-In the above code snippet, we've defined an interface `geometry`, and two types `rect` and `circle`. While Go likes to claim it doesn't actually have a subtype relation[^Citation needed], for all intents and purposes `rect` and `circle` are subtypes of `geometry` because there is a defined `area` and `perim` method for both of them, both of which match the type signature of `geometry` for their respective types. Because `rect` and `circle` implement the necessary methods to match the *structre* of `geometry`, they can be used in the `measure` method, which accepts `geometry` values.
+In the above code snippet, we've defined an interface `geometry`, and two types `rect` and `circle`. While Go likes to claim it doesn't actually have a subtype relation, for all intents and purposes `rect` and `circle` are subtypes of `geometry` because there is a defined `area` and `perim` method for both of them, both of which match the type signature of `geometry` for their respective types. Because `rect` and `circle` implement the necessary methods to match the *structure* of `geometry`, they can be used in the `measure` method, which accepts `geometry` values.
 
 Put simply, because `rect` and `circle` match the structure of `geometry`, they are a subtype of it, and this is structural subtyping. You might find it worthwhile to read more about structural subtyping on the [Wikipedia page about "Structural Type Systems"](https://en.wikipedia.org/wiki/Structural_type_system).
 
@@ -108,9 +108,9 @@ The philosophy of duck typing is fairly heavily encouraged in Python-land. The m
 
 If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck.
 
-Structural Subtyping in the Mypy Type-checker
+Structural Subtyping in the mypy Type-checker
 ---------------------------------------------
-The subtype relation in Mypy as it stands is basically just a nominative checker. You have to explicitly inherit from a superclass to be considered a subtype of it, pretty much like Java. However, there's been an [outstanding issue](https://github.com/python/typing/issues/11) discussing approaches to structural subtyping (which they call "Protocols") since the early days of Mypy. The meat of the proposed approach is in [this comment](https://github.com/python/typing/issues/11#issuecomment-138133867), but I'll summarise here.
+The subtype relation in mypy as it stands is basically just a nominative checker. You have to explicitly inherit from a superclass to be considered a subtype of it, pretty much like Java. However, there's been an [outstanding issue](https://github.com/python/typing/issues/11) discussing approaches to structural subtyping (which they call "Protocols") since the early days of mypy. The meat of the proposed approach is in [this comment](https://github.com/python/typing/issues/11#issuecomment-138133867), but I'll summarise here.
 
 Protocols will be declared as separate classes, inheriting from a magic `Protocol` base class. Rather than using `isinstance` to check if something implements a protocol (read: "is a structural subtype of"), there'll be some separate checker function like `implements`. Runtime implementation checks are performance expensive, and Protocols are intended to make static checking easier, not necessarily as a runtime representation of an API (though that functionality is still useful), hence the separate method.
 
@@ -177,4 +177,4 @@ Very similar code, just with a different base class, an extra decorator, and exp
 Final Thoughts
 --------------
 
-In general, you can pretty comfortably get away with the nominal subtyping that Mypy happily type checks right now, but it does push you in a direction that's slightly less Pythonic. Given Python's emphasis on duck typing, it makes a lot of sense to provide some sort of structural subtyping too. There's been a little bit of interest lately on the [Mypy gitter chat](https://gitter.im/python/mypy) to do with structural subtyping, so hopefully the situation will start improving soon.
+In general, you can pretty comfortably get away with the nominal subtyping that mypy happily type checks right now, but it does push you in a direction that's slightly less Pythonic. Given Python's emphasis on duck typing, it makes a lot of sense to provide some sort of structural subtyping too. There's been a little bit of interest lately on the [mypy gitter chat](https://gitter.im/python/mypy) to do with structural subtyping, so hopefully the situation will start improving soon.
