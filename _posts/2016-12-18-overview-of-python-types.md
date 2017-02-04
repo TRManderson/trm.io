@@ -74,7 +74,7 @@ class C(object):
 
 I've snuck in a bit of Python weirdness without mentioning. As PEP 3107 (Function Annotations) declares that function annotations must be valid Python expressions, we can't use undefined variables etc, so generics become a little bit more verbose. The `T = TypeVar('T')` declares a "type variable", and when used in a method, all usages of `T` as a type annotation are forced to represent the same type. 
 
-Type variables have a concept called "variance", which limits what can be substituted in for them. A "covariant" type variable lets any usages of it be either the same type as, or a "subtype" (subclass) of the type that the variable is standing in for. A "contravairant" type variable makes sure that the type it is standing in for is a subtype/subclass of every usage. An "invariant" type variable must have every usage being exactly the same type as whatever it's standing in for.
+Type variables have a concept called "variance", which limits what can be substituted in for them. A "covariant" type variable lets any usages of it be either the same type as, or a "subtype" (subclass) of the type that the variable is standing in for. A "contravariant" type variable makes sure that the type it is standing in for is a subtype/subclass of every usage. An "invariant" type variable must have every usage being exactly the same type as whatever it's standing in for.
 
 Generics in Python, like list, are declared using `Generic[T]` as a base class instead of `object`, where the `T` is a `TypeVar` declared before the class is, and this also limits what a generic type can contain according to the `TypeVar`'s variance.
 
