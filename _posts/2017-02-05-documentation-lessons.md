@@ -1,16 +1,20 @@
 ---
 layout: post
 title:  "Lessons Learned from Not Documenting"
-date:   1970-01-01 00:00:00 +1000
-categories: 
+date:   2017-02-05 21:55:00 +1000
+categories: documentation processes
 ---
 
 In this post I'm discussing lessons I've learned about documentation where I really should have been doing something, but haven't been. Every single lesson is, at the time of writing, something I am about to implement, or have implemented within the last week. Every single one is something I see immense value in. Every single section has concrete implementation steps at the bottom.
 
+![Commit message](/uploads/2017/02/deco-commit.png)
+
+_Quality commit messages are part of documentation_
+
 Documenting Processes
 ------------------
 
-Until recently, my role at work was primarily a devops one, and thus involved a whole lot of processes. Being young and reckless, I pretty consistently took the "just play with it until it works" approach, which was honestly good enough at the time. Now, after stepping back and handing a lot of the devops workload to someone else, the importance of documenting processes has dawned on me.
+Until recently, my role at work was primarily a devops one, and thus involved a whole lot of processes. Being young and reckless, I pretty consistently took the "just play with it until it works" approach, which was honestly good enough at the time. Now, after stepping back and handing a lot of the devops workload to someone else, the importance of documenting processes has dawned on me. The worst it
 
 This lesson only really hit me with the recent [Gitlab database incident](https://docs.google.com/document/d/1GCK53YDcBWQveod9kfzW-VCxIABGiryG7_z_6jHdVik/pub), where they lost their production database to a stray `rm -rf` that was accidentally run on prod instead of staging. The incident itself wasn't what really drove the point home, it was [this comment by gizmo](https://news.ycombinator.com/item?id=13537177) on the [Hacker News thread](https://news.ycombinator.com/item?id=13537052).
 
@@ -28,10 +32,10 @@ Up until now I've been basically of the mind that "configuration management is a
 
 
 My plan from now when developing a process:
- - Write down every action before I take it;
- - Talk each action over with a colleague -- they seem to be pretty good at spotting my stupid mistakes;
- - Write down the result after I take each action;
- - When I'm done writing down and trying every step of the process, automate it.
+ - Write down every action before I take it
+ - Talk each action over with a colleague -- they seem to be pretty good at spotting my stupid mistakes
+ - Write down the result after I take each action
+ - When I'm done writing down and trying every step of the process, automate it
 
 Especially important:
  - I'll add human checks to the automated process, to be removed at a later date when confidence has been established.
@@ -48,17 +52,22 @@ So basically a changelog...
 
 Being able to see what's changed in a version upgrade of a project, or even between commits (without having to read commit messages), is a really useful debugging tool, a nice way to communicate progress, and even an opportunity to [have a bit of fun](https://api.slack.com/changelog).
 
-The worst part is, [versioning releases](http://semver.org/) and documenting changes is really such a trivial and useful thing. It's as simple as keeping a "CHANGELOG.md" in your git repo, and making sure every pull request you do updates it (Haven't got a pull request workflow? Just start doing it and never merge your changes until people review them). After a release, start a new heading for the next version, add your changes there. Need to do hotfixes? Start a branch from where you released last. Super simple stuff.
-
-Want to step it up a notch? Have a dev blog where you do reader-friendly writeups of large changes (or even writeups of challenging bugfixes).
-
+The worst part is, [versioning releases](http://semver.org/) and documenting changes is really such a trivial and useful thing. It's as simple as:
+- Keeping a "CHANGELOG.md" in your git repo, and making sure every pull request you do updates it (Haven't got a pull request workflow? Just start doing it and never merge your changes until people review them in a PR)
+- After a release, start a new heading for the next version, add your changes there
+- Need to do hotfixes? Start a branch from where you released last. Super simple stuff
+ - Want to step it up a notch? Have a dev blog where you do reader-friendly writeups of large changes (or even writeups of challenging bugfixes)
 
 High-level documentation
 ------------------------
 
 I have a tendency to document my work at the API level, and no higher. I can plainly say that this is a recipe for disaster. When all you've got are type annotations and a brief description of what a function does, it becomes very unclear how to actually interact with an API until you have a play with it and trigger a few errors. I think everyone has dealt with a poorly documented library at some stage, and I think this is a large part of what causes it.
 
-Some of the best documentation I've seen is the [SQLAlchemy reference](http://docs.sqlalchemy.org/en/rel_1_1/), which starts from the high level with basic usage, then drills down section by section about how to use various parts of the tool - ORM mappers, the Session API (not just API documentation, but how to use it, and how components interact). On top of this, there's *really* in-depth API documentation too.
+![Tropofy Fileframe](/uploads/2017/02/documentation.png "One of the most commonly used APIs in work's web framework. Well documented, huh?")
+
+_One of the most commonly used APIs in work's web framework. Well documented, huh? Those types are it._
+
+Some of the best documentation I've seen is the [SQLAlchemy reference](http://docs.sqlalchemy.org/en/rel_1_1/), which starts from the high level with basic usage, then drills down section by section about how to use various parts of the tool -- ORM mappers, the Session API (not just API documentation, but how to use it, and how components interact). On top of this, there's *really* in-depth API documentation too.
 
 Pretty much everyone agrees that documentation is good, but pretty universally, people under-document. I have a slight suspicion that this is basically due to two things: underestimating [inferential distance](https://wiki.lesswrong.com/wiki/Inferential_distance) on work you're familiar with, and high cycle-time for documentation.
 
