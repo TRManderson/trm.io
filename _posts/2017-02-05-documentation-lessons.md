@@ -14,7 +14,7 @@ _Quality commit messages are part of documentation_
 Documenting Processes
 ------------------
 
-Until recently, my role at work was primarily a devops one, and thus involved a whole lot of processes. Being young and reckless, I pretty consistently took the "just play with it until it works" approach, which was honestly good enough at the time. Now, after stepping back and handing a lot of the devops workload to someone else, the importance of documenting processes has dawned on me. The worst it
+Until recently, my role at work was primarily a devops one, and thus involved a whole lot of processes. Being young and reckless, I pretty consistently took the "just play with it until it works" approach, which was honestly good enough at the time. Now, after stepping back and handing a lot of the devops workload to someone else, the importance of documenting processes has dawned on me.
 
 This lesson only really hit me with the recent [Gitlab database incident](https://docs.google.com/document/d/1GCK53YDcBWQveod9kfzW-VCxIABGiryG7_z_6jHdVik/pub), where they lost their production database to a stray `rm -rf` that was accidentally run on prod instead of staging. The incident itself wasn't what really drove the point home, it was [this comment by gizmo](https://news.ycombinator.com/item?id=13537177) on the [Hacker News thread](https://news.ycombinator.com/item?id=13537052).
 
