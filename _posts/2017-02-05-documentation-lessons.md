@@ -40,6 +40,15 @@ My plan from now when developing a process:
 Especially important:
  - I'll add human checks to the automated process, to be removed at a later date when confidence has been established.
 
+UPDATE 2017-02-06 11:30:00+10:00:
+
+In response to some discussion about this post on Facebook, [Tony Morris](http://blog.tmorris.net/) had this to say:
+
+>As to checklists, this is taught heavily in aviation under the subject Human Factors. I regularly talk to myself when flying. In fact, I did it just this morning. However, I disagree with the advice of deviating from a plan. That just doesn't work. Be prepared for the change in plan.
+>
+>I was given my landing clearance at 1500ft AGL, <1 mile out this morning. I was planning to land, but you know, I have to deviate from that plan, or I'd be sitting in a twisted aeroplane right now. I also had an unwell passenger. The skill is learning to adapt to changing plans, including unanticipated changes.
+
+This emphasises something very important that I didn't: things go wrong, and you have to be able to deal with that.
 
 Documenting Changes (and versions)
 -------------------
