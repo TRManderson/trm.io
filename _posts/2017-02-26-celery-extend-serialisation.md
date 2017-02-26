@@ -2,7 +2,7 @@
 layout: post
 title: Extending Celery to Flexibly Support Custom Data Types
 categories: python celery serialisation
-date:   2017-01-26 21:55:00 +1000
+date:   2017-02-26 21:55:00 +1000
 ---
 
 ## Background
