@@ -16,12 +16,13 @@
 title: Tom Manderson
 email: me@trm.io
 description: > # this means to ignore newlines until "baseurl:"
-  Software engineering/Mathematics student, developer at Polymathian,
+  Consulting software engineer, software engineering/Mathematics student,
   Pythonista/Haskeller
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://trm.io" # the base hostname & protocol for your site
-twitter_username: TRManderson
-github_username:  TRManderson
+twitter_username:  TRManderson
+github_username:   TRManderson
+linkedin_username: TRManderson
 
 # Build settings
 markdown: kramdown
